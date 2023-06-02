@@ -1,0 +1,15 @@
+.screen {
+  width: 20em;
+  height: 3.4em;
+  background-color: #858693;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding-right: .5em;
+  box-sizing: border-box;
+}
+
+.display {
+  color: #fcfeff;
+  font-size: 2.5em;
+}

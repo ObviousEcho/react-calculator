@@ -22,16 +22,19 @@ router.get("/", (req, res) => {
 
 router.put("/", (req, res) => {
   const { num } = req.body;
+  const sql = `UPDATE memory SET memory_slot=${num} WHERE id = 1`;
 
   if (num) {
-    console.log(num);
-
-    const response = {
-      status: "Success",
-      body: num,
-    };
-
-    res.json(response);
+    db.query(sql, (err, rows) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+      res.json({
+        message: `Success`,
+        data: rows,
+      });
+    });
   } else {
     res.status(500).json("Error in saving to memory!");
   }
