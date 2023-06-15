@@ -1,0 +1,36 @@
+.btn {
+  width: 5em;
+  height: 5em;
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: 0.5px solid #858693;
+}
+
+.wide {
+  width: 10em;
+  height: 5em;
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: 0.5px solid #858693;
+}
+
+.org {
+  width: 5em;
+  height: 5em;
+  background-color: #f4913e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: 0.5px solid #858693;
+}
+
+p {
+  font-size: 1.9em;
+}
