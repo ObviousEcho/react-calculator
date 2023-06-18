@@ -30,7 +30,7 @@ const Calc = () => {
     "=",
   ];
 
-  const [value1, setValue1] = useState(0);
+  const [value1, setValue1] = useState("");
   const [value2, setValue2] = useState(0);
   const [opr, setOpr] = useState("");
 
@@ -63,26 +63,30 @@ const Calc = () => {
 
     const operations = () => {
       setValue2(value1);
-      setValue1(0);
+      setValue1("");
     };
 
     const equals = (x) => {
       switch (x) {
         case "/":
-          setValue1((prev) => parseInt(value2) / parseInt(prev));
+          setValue1((prev) => (parseInt(value2) / parseInt(prev)).toString());
           setValue2(0);
+          setOpr("=");
           break;
         case "*":
-          setValue1((prev) => parseInt(prev) * parseInt(value2));
+          setValue1((prev) => (parseInt(prev) * parseInt(value2)).toString());
           setValue2(0);
+          setOpr("=");
           break;
         case "-":
-          setValue1((prev) => parseInt(value2) - parseInt(prev));
+          setValue1((prev) => (parseInt(value2) - parseInt(prev)).toString());
           setValue2(0);
+          setOpr("=");
           break;
         case "+":
-          setValue1((prev) => parseInt(prev) + parseInt(value2));
+          setValue1((prev) => (parseInt(prev) + parseInt(value2)).toString());
           setValue2(0);
+          setOpr("=");
           break;
         default:
           console.log(`Learn how to do Math!`);
@@ -94,6 +98,10 @@ const Calc = () => {
     }
 
     if (numKeys) {
+      if (opr === "=") {
+        setValue1("");
+        setOpr("");
+      }
       setValue1((prev) => prev + parseInt(btnClicked));
     }
     if (oprKeys) {
