@@ -40,4 +40,14 @@ router.put("/", (req, res) => {
   }
 });
 
+router.delete("/", (req, res) => {
+  const sql = `DELETE FROM memory WHERE id = 1`;
+  db.query(sql, (err, result) => {
+    if (err) {
+      res.statusMessage(400).json({ error: res.message });
+    }
+    res.json({ message: "Deleted" });
+  });
+});
+
 module.exports = router;

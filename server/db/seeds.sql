@@ -1,2 +1,4 @@
-INSERT INTO memory (memory_slot)
-VALUES (0)
+INSERT INTO memory
+    (memory_slot)
+VALUES
+    (20)
