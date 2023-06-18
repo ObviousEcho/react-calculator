@@ -69,22 +69,30 @@ const Calc = () => {
     const equals = (x) => {
       switch (x) {
         case "/":
-          setValue1((prev) => (parseInt(value2) / parseInt(prev)).toString());
+          setValue1((prev) =>
+            (parseFloat(value2) / parseFloat(prev)).toString()
+          );
           setValue2(0);
           setOpr("=");
           break;
         case "*":
-          setValue1((prev) => (parseInt(prev) * parseInt(value2)).toString());
+          setValue1((prev) =>
+            (parseFloat(prev) * parseFloat(value2)).toString()
+          );
           setValue2(0);
           setOpr("=");
           break;
         case "-":
-          setValue1((prev) => (parseInt(value2) - parseInt(prev)).toString());
+          setValue1((prev) =>
+            (parseFloat(value2) - parseFloat(prev)).toString()
+          );
           setValue2(0);
           setOpr("=");
           break;
         case "+":
-          setValue1((prev) => (parseInt(prev) + parseInt(value2)).toString());
+          setValue1((prev) =>
+            (parseFloat(prev) + parseFloat(value2)).toString()
+          );
           setValue2(0);
           setOpr("=");
           break;
