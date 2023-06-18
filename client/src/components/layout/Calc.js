@@ -83,9 +83,11 @@ const Calc = () => {
           setOpr("=");
           break;
         case "-":
-          setValue1((prev) =>
-            (parseFloat(value2) - parseFloat(prev)).toString()
-          );
+          setValue1((prev) => {
+            const result = parseFloat(value2) - parseFloat(prev);
+            return Math.round(result * 100) / 100;
+          });
+
           setValue2(0);
           setOpr("=");
           break;
