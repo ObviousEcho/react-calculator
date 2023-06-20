@@ -4,8 +4,6 @@ const router = express.Router();
 const db = require("../database/database").databaseConnection;
 
 router.get("/", (req, res) => {
-  console.log(`request successfull `);
-
   const sql = `SELECT * FROM memory`;
 
   db.query(sql, (err, rows) => {
@@ -21,6 +19,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  console.log(`success`);
   const params = req.body.memory_slot;
   const sql = `INSERT INTO memory (memory_slot) VALUES (?)`;
 
@@ -41,11 +40,11 @@ router.post("/", (req, res) => {
 });
 
 router.put("/", (req, res) => {
-  const { num } = req.body;
-  const sql = `UPDATE memory SET memory_slot=${num} WHERE id = 1`;
+  const params = req.body.memory_slot;
+  const sql = `UPDATE memory SET memory_slot=(?) WHERE id = 1`;
 
-  if (num) {
-    db.query(sql, (err, rows) => {
+  if (params) {
+    db.query(sql, params, (err, rows) => {
       if (err) {
         res.status(500).json({ error: err.message });
         return;

@@ -34,6 +34,44 @@ const Calc = () => {
   const [value2, setValue2] = useState(0);
   const [opr, setOpr] = useState("");
 
+  const getStorage = async () => {
+    try {
+      const response = await fetch("/api/memory", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const result = await response.json();
+      const data = result.data[0].memory_slot;
+
+      if (data !== 0) {
+        setValue1(data);
+      }
+    } catch (err) {
+      setValue1(`Error`);
+    }
+  };
+
+  const updateStorage = async (data) => {
+    try {
+      const response = await fetch("/api/memory", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ memory_slot: data }),
+      });
+
+      await response.json();
+
+      setValue1(data);
+    } catch (err) {
+      setValue1("Error");
+    }
+  };
+
   const buttonClickHandler = (e) => {
     let element = e.target;
     let btnClicked = e.target.innerText;
@@ -117,13 +155,13 @@ const Calc = () => {
     if (oprKeys) {
       switch (btnClicked) {
         case "STO":
-          console.log("Test");
+          updateStorage(value1);
           break;
         case "RCL":
-          console.log("Test");
+          getStorage();
           break;
         case "RST":
-          console.log("Test");
+          updateStorage("0");
           break;
         case "AC":
           setValue1("");
