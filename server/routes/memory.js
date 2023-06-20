@@ -20,6 +20,26 @@ router.get("/", (req, res) => {
   });
 });
 
+router.post("/", (req, res) => {
+  const params = req.body.memory_slot;
+  const sql = `INSERT INTO memory (memory_slot) VALUES (?)`;
+
+  if (params) {
+    db.query(sql, params, (err, rows) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+      res.json({
+        message: `Success`,
+        data: rows,
+      });
+    });
+  } else {
+    res.status(500).json("Error in saving to memory!");
+  }
+});
+
 router.put("/", (req, res) => {
   const { num } = req.body;
   const sql = `UPDATE memory SET memory_slot=${num} WHERE id = 1`;
