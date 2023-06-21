@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 import Screen from "../ui/Screen";
 import Button from "../ui/Button";
@@ -33,6 +33,30 @@ const Calc = () => {
   const [value1, setValue1] = useState("");
   const [value2, setValue2] = useState(0);
   const [opr, setOpr] = useState("");
+  const [isMem, setIsMem] = useState(false);
+
+  const loadStorage = useCallback(async () => {
+    try {
+      const response = await fetch("/api/memory", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const result = await response.json();
+      const data = result.data[0].memory_slot;
+
+      if (parseInt(data) !== 0) {
+        setIsMem(true);
+      }
+    } catch (err) {
+      console.error(`Error: ${err}`);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadStorage();
+  }, [loadStorage]);
 
   const getStorage = async () => {
     try {
@@ -198,7 +222,7 @@ const Calc = () => {
 
   return (
     <div className={classes.calc}>
-      <Screen view={value1} />
+      <Screen view={value1} props={isMem} />
       <div className={classes.keys} onClick={buttonClickHandler}>
         {symbols.map((symbol) => (
           <Button key={symbol} digit={symbol} />
