@@ -180,12 +180,14 @@ const Calc = () => {
       switch (btnClicked) {
         case "STO":
           updateStorage(value1);
+          setIsMem(true);
           break;
         case "RCL":
           getStorage();
           break;
         case "RST":
           updateStorage("0");
+          setIsMem(false);
           break;
         case "AC":
           setValue1("");
@@ -222,7 +224,7 @@ const Calc = () => {
 
   return (
     <div className={classes.calc}>
-      <Screen view={value1} props={isMem} />
+      <Screen view={value1} memory={isMem} />
       <div className={classes.keys} onClick={buttonClickHandler}>
         {symbols.map((symbol) => (
           <Button key={symbol} digit={symbol} />

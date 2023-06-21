@@ -5,11 +5,16 @@
   display: flex;
   justify-content: right;
   align-items: center;
-  padding-right: .5em;
+  padding-right: 0.5em;
   box-sizing: border-box;
 }
 
 .display {
   color: #fcfeff;
   font-size: 2.5em;
+}
+
+.memory {
+  color: #fcfeff;
+  font-size: 1em;
 }
