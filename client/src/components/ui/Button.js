@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 import classes from "./Button.module.css";
 
 const Button = ({ digit }) => {
+  // State to help render buttons conditionally by class name
   const [isMem, setIsMem] = useState(false);
   const [isOpr, setIsOpr] = useState(false);
   const [isAll, setIsAll] = useState(false);
 
+  // Load upon initial render
   useEffect(() => {
     const lgBtn = ["STO", 0];
     const org = ["/", "*", "-", "+", "="];
@@ -25,6 +27,7 @@ const Button = ({ digit }) => {
     }
   }, [digit, isMem, isOpr, isAll]);
 
+  // conditionally render buttons, either wide, orange, or normal
   return (
     <>
       {isMem && (
