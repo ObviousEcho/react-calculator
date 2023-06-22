@@ -89,7 +89,6 @@ const Calc = () => {
       });
 
       await response.json();
-
       setValue1(data);
     } catch (err) {
       setValue1("Error");
@@ -181,9 +180,11 @@ const Calc = () => {
         case "STO":
           updateStorage(value1);
           setIsMem(true);
+          setOpr("=");
           break;
         case "RCL":
           getStorage();
+          setOpr("=");
           break;
         case "RST":
           updateStorage("0");

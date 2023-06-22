@@ -5,6 +5,8 @@ USE memory_db;
 
 CREATE TABLE memory
 (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    memory_slot DECIMAL
+    id INT NOT NULL
+    AUTO_INCREMENT PRIMARY KEY,
+    memory_slot VARCHAR
+    (10)
 );
