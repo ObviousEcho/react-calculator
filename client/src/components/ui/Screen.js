@@ -4,7 +4,7 @@ import classes from "./Screen.module.css";
 
 const Screen = ({ view, memory }) => {
   return (
-    <div className={classes.screen}>
+    <div className={`${classes.screen} ${memory && classes[`justify-space`]}`}>
       {memory && <p className={classes.memory}>M</p>}
       <p className={classes.display}>{view}</p>
     </div>

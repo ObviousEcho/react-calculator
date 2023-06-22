@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+.justify-space {
+  justify-content: space-between;
+}
+
 .display {
   color: #fcfeff;
   font-size: 2.5em;
@@ -17,4 +21,5 @@
 .memory {
   color: #fcfeff;
   font-size: 1em;
+  padding-left: 0.5em;
 }
