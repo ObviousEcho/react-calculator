@@ -189,8 +189,13 @@ const Calc = () => {
       }
       setValue1((prev) => prev + parseInt(btnClicked));
     }
-    // Performs function based upon which button was clicked
+    // Performs function based upon which button was clicked, screen clears value if opr is "="
     if (oprKeys) {
+      if (opr === "=") {
+        setValue1("");
+        setOpr("");
+      }
+
       switch (btnClicked) {
         case "STO":
           updateStorage(value1);
