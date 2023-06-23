@@ -8,3 +8,15 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+@media screen and (max-width: 768px) {
+  .calc {
+    width: 50vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .calc {
+    width: 100vw;
+  }
+}

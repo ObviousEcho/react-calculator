@@ -32,3 +32,23 @@
     transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .App-logo {
+    height: 30vh;
+  }
+
+  .App-header {
+    min-height: 30vh;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .App-logo {
+    height: 20vh;
+  }
+
+  .App-header {
+    min-height: 20vh;
+  }
+}

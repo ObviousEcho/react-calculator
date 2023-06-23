@@ -23,3 +23,17 @@
   font-size: 1em;
   padding-left: 0.5em;
 }
+
+@media screen and (max-width: 768px) {
+  .screen {
+    width: 50vw;
+    height: 5em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .screen {
+    width: 100vw;
+    height: 5em;
+  }
+}

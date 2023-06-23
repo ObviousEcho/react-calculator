@@ -34,3 +34,31 @@
 p {
   font-size: 1.9em;
 }
+
+@media screen and (max-width: 768px) {
+  .btn {
+    width: 12.5vw;
+  }
+
+  .wide {
+    width: 25vw;
+  }
+
+  .org {
+    width: 12.5vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .btn {
+    width: 25vw;
+  }
+
+  .wide {
+    width: 50vw;
+  }
+
+  .org {
+    width: 25vw;
+  }
+}
