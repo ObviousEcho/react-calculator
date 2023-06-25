@@ -131,12 +131,23 @@ const Calc = () => {
   const equals = (x) => {
     switch (x) {
       case "/":
-        setValue1((prev) => (parseFloat(value2) / parseFloat(prev)).toString());
+        const divResult = parseFloat(value2) / parseFloat(value1);
+        if (divResult.toString().length > 12) {
+          setValue1(divResult.toFixed(12));
+        } else {
+          setValue1(divResult.toString());
+        }
         setValue2(0);
         setOpr("=");
         break;
       case "*":
-        setValue1((prev) => (parseFloat(prev) * parseFloat(value2)).toString());
+        const mulResult = parseFloat(value2) * parseFloat(value1);
+        console.log(mulResult);
+        if (mulResult.toString().length > 12) {
+          setValue1(mulResult.toFixed(2));
+        } else {
+          setValue1(mulResult.toString());
+        }
         setValue2(0);
         setOpr("=");
         break;
@@ -168,7 +179,6 @@ const Calc = () => {
         break;
       case "RCL":
         getStorage();
-        setOpr("=");
         break;
       case "RST":
         updateStorage("0");
@@ -230,13 +240,27 @@ const Calc = () => {
         setValue1("");
         setOpr("");
       }
-      setValue1((prev) => prev + parseInt(btnClicked));
+      setValue1((prev) => {
+        // Prevents screen from displaying digits longer than length of screen
+        const result = prev + parseInt(btnClicked);
+        const resultToString = result.toString().length > 13;
+        if (resultToString) {
+          return result.substring(0, 13);
+        } else {
+          return result;
+        }
+      });
     }
     // Performs function based upon which operation was clicked, screen clears value if opr is "="
     if (oprKeys) {
       if (opr === "=") {
         setValue1("");
         setOpr("");
+      }
+
+      // Prevents multiple "." from displaying to screen
+      if (btnClicked === "." && value1.includes(".")) {
+        return;
       }
 
       equationSwitch(btnClicked);

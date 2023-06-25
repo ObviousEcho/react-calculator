@@ -35,5 +35,7 @@
   .screen {
     width: 100vw;
     height: 5em;
+    padding-right: 1.5em;
+    padding-left: 0.5em;
   }
 }
