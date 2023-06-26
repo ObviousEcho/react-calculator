@@ -123,9 +123,17 @@ const Calc = () => {
   };
 
   // Function sets state values to perform math operations
-  const operations = () => {
-    setValue2(value1);
-    setValue1("");
+  const operations = (str) => {
+    switch (str) {
+      // Postive switch case allows for successive sums to chain togethor
+      case "+":
+        setValue2((prev) => (parseFloat(prev) + parseFloat(value1)).toString());
+        setValue1("");
+        break;
+      default:
+        setValue2(value1);
+        setValue1("");
+    }
   };
   // Function performs math operations when "/", "*", "-", or "+" key is pressed
   const equals = (x) => {
@@ -142,7 +150,6 @@ const Calc = () => {
         break;
       case "*":
         const mulResult = parseFloat(value2) * parseFloat(value1);
-        console.log(mulResult);
         if (mulResult.toString().length > 12) {
           setValue1(mulResult.toFixed(2));
         } else {
@@ -194,16 +201,16 @@ const Calc = () => {
         setValue1((prev) => prev / 100);
         break;
       case "/":
-        operations();
+        operations(str);
         break;
       case "*":
-        operations();
+        operations(str);
         break;
       case "-":
-        operations();
+        operations(str);
         break;
       case "+":
-        operations();
+        operations(str);
         break;
       case "=":
         equals(opr);
