@@ -4,6 +4,8 @@ React calculator is just that. A calculator built with React. This is a simple p
 
 I could have achieved memory storage easily enough by using local storage, however I chose to create a simple relational database to handle storage. Perhaps this was overkill, it however allowed me an opportunity to incorporate back end functionality for fun.
 
+Additionally, I opted not to use a math package to handle calculations, but to write my javascript from scratch. Basic equations are handled just fine, there are however a couple of bugs that do exist... I was surprised at how complex code can become considering how simplistic a calculator seems today.
+
 ## Dependencies
 
 - React
@@ -27,6 +29,6 @@ Note: You must have Mysql and Mysql Shell installed. You can visit the community
 - Type "quit" then cd back into the root directory
 - Run "npm run develop"
 
-## Challenges
-
 ## Deployed Application
+
+You can view the deployed application [here]()!
