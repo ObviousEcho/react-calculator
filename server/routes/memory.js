@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const db = require("../database/database").databaseConnection;
+const db = require("../config/connections").databaseConnection;
 
 router.get("/", (req, res) => {
   const sql = `SELECT * FROM memory`;
